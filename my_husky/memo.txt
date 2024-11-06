@@ -1,0 +1,10 @@
+1. joint action은 섞이지 않은 상태로 줘야 하고 get_joint_pos/vel 또한 섞이지 않은 상태로 들어간다
+2. applied_action은 섞인 상태로 얻어진다.
+3. franka는 vel_action만을 줘야 의도대로 움직인다.
+	3.1 특이한 점은 panda는 vel을 주다가 중지하면 0이 되지만, franka는 계속 잔존한다.
+4. franka에 vel_action만을 통해 움직이도록 학습은 할 수 있겠지만, 적절한 학습 알고리즘을 찾는 것은 어려울 것 같다.
+5. default joint pos :
+	joint_4 = [x in (-0.4, 0.5)]
+	joint_6 = [x in (0.9, 1.0)]
+	=> 즉 joint_4는 negative pos만, joint_6은 positive pos만 받는다
+6. 가동범위 이상의 pos를 받으면 husky 자체가 날아간다.
